@@ -1,26 +1,120 @@
+/* Hallmark · checked: 2026-11-19 · genre: modern-minimal (inferred)
+ * floor: 0 FAIL · fixed: 10a, 34, 40, 48 · reflex: 26b · structural: 44c, 58, 59, 77 printed
+ * waive: 19 · the owner asked for "© 2026 Makhzan. All rights reserved."
+ * built: the project · redesign: polish · v2.0.0 */
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #121212;
+  --foreground: #f4f2ee;
+  --muted: #9a9a9a;
+  --quiet: #bdbdbd;
+  --soft: #cfcfcf;
+  --card: #1a1a1a;
+  --nav: #1c1c1c;
+  --ink: #0e0e0e;
+  --mark: #c4b5fd;
+  --mark-ink: #1a1028;
+  --line: rgba(255, 255, 255, 0.08);
+  --grid-line: rgba(255, 255, 255, 0.045);
+  --mask: #000;
+  --shade: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.55), transparent 70%);
+  color-scheme: dark;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-quiet: var(--quiet);
+  --color-soft: var(--soft);
+  --color-card: var(--card);
+  --color-nav: var(--nav);
+  --color-ink: var(--ink);
+  --color-mark: var(--mark);
+  --color-mark-ink: var(--mark-ink);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --animate-glide: glide 9s ease-in-out infinite alternate;
+  --animate-rise: rise 0.8s ease-out both;
+  @keyframes glide {
+    from {
+      transform: translateX(-16%);
+    }
+    to {
+      transform: translateX(14%);
+    }
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  overflow-x: clip;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  overflow-wrap: break-word;
+  min-width: 0;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--mark);
+  outline-offset: 3px;
+}
+
+a:active,
+button:active {
+  transform: translateY(1px);
+}
+
+button:disabled {
+  opacity: 0.5;
+}
+
+::selection {
+  background: var(--mark);
+  color: var(--background);
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 92px 92px;
+  mask-image: linear-gradient(to bottom, var(--mask) 30%, transparent 88%);
+}
+
+.ground {
+  background: var(--shade);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a:active,
+  button:active {
+    transform: none;
+  }
 }
